@@ -29,9 +29,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Copy additional files
+      - name: Copy configuration files
         run: |
           cp public/_redirects dist/
+          cp public/.htaccess dist/
+          cp vercel.json dist/
           touch dist/.nojekyll
 
       - name: Upload production-ready build files
