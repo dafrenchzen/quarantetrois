@@ -23,19 +23,9 @@
           "value": "application/javascript; charset=utf-8"
         }
       ]
-    },
-    {
-      "source": "/src/(.*)\\.tsx?$",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript; charset=utf-8"
-        }
-      ]
     }
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "vite",
-  "cleanUrls": true
+  "framework": "vite"
 }
