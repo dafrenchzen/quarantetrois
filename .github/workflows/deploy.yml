@@ -21,15 +21,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
 
-      - name: Create .nojekyll file
-        run: touch dist/.nojekyll
+      - name: Copy additional files
+        run: |
+          cp public/_redirects dist/
+          touch dist/.nojekyll
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
@@ -55,5 +58,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          cname: ${{ secrets.CNAME }}
-          enable_jekyll: false
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy to GitHub Pages'
