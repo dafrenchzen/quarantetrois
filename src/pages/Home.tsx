@@ -101,6 +101,8 @@ export function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="min-h-[80vh] flex flex-col items-center justify-center px-4 relative overflow-hidden">
+        {/* Background with gradient fallback */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 opacity-90" />
         <div className="absolute inset-0 bg-[url('/images/studio-bg.jpg')] bg-cover bg-center opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark-900/50 to-dark-900" />
         
