@@ -16,22 +16,26 @@
       ]
     },
     {
-      "source": "/(.*)\\.js$",
+      "source": "/assets/(.*)\\.js$",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/javascript"
+          "value": "application/javascript; charset=utf-8"
         }
       ]
     },
     {
-      "source": "/(.*)\\.tsx?$",
+      "source": "/src/(.*)\\.tsx?$",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/javascript"
+          "value": "application/javascript; charset=utf-8"
         }
       ]
     }
-  ]
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "cleanUrls": true
 }
