@@ -8,9 +8,24 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: path.resolve(__dirname, 'index.html'),
       output: {
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('firebase')) {
+              return 'firebase'
+            }
+            if (id.includes('react')) {
+              return 'react-vendor'
+            }
+            if (id.includes('@headlessui') || id.includes('@heroicons')) {
+              return 'ui-vendor'
+            }
+            return 'vendor'
+          }
+        },
         entryFileNames: (chunkInfo) => {
           return chunkInfo.name === 'main' ? 'assets/main.js' : 'assets/[name]-[hash].js'
         },
